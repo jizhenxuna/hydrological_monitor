@@ -15,7 +15,7 @@ public class ResultMsg<T> implements Serializable {
 
     private String message; //返回的消息
 
-    private T resultObj;
+    private T resultObj;    //返回的实体对象..
 
     public ResultMsg(int responseStatus, T resultObj) {
         this.responseStatus = responseStatus;
