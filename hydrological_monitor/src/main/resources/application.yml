@@ -1,0 +1,16 @@
+spring:
+  #通用数据源配置
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/hydrological_monitor?characterEncoding=utf-8&serverTimezone=GMT%2B8
+    username: root
+    password: root
+  #JPA 相关配置
+  jpa:
+    show-sql: true
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: update
+server:
+  servlet:
+    context-path: /monitor
