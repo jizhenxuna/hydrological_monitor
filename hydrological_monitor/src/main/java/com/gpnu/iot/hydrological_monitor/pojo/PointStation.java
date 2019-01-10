@@ -3,11 +3,9 @@ package com.gpnu.iot.hydrological_monitor.pojo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 @Data
@@ -17,6 +15,8 @@ import java.util.Date;
 @Entity
 public class PointStation {
     @Id
+    @GenericGenerator(name = "point_station_uuid",strategy = "uuid")
+    @GeneratedValue(generator = "point_station_uuid")
     private String id;
     @Column(name = "PS_AREA",length = 64)
     private String area; //区域,
@@ -32,12 +32,16 @@ public class PointStation {
     private double ecologicalFlow;  //'生态流量',
     @Column(name = "PS_AUTHORIZED_FLOW")
     private double authorizedFlow;  //'核定流量',
+    @Column(name = "PS_TEMPLATE_FLOW")
+    private double templateFlow;    //'瞬时流量'
     @Column(name = "PS_FLOW_STATUS")
     private Integer flowStatus; //'流量状态(0--正常  1--过快  2--过慢)',
     @Column(name = "PS_VOLTAGE")
     private double voltage;  //'电池电压',
     @Column(name = "PS_DEVICENUM",length = 32)
     private String deviceNum;    //'设备卡号',
+    @Column(name = "PS_HEIGHT")
+    private double height;  //'空高'
     @Column(name = "CREATE_TIME")
     private Date createTime;   //'更新时间',
 }
