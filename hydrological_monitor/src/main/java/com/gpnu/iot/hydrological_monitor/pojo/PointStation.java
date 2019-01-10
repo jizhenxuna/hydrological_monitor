@@ -18,8 +18,6 @@ public class PointStation {
     @GenericGenerator(name = "point_station_uuid",strategy = "uuid")
     @GeneratedValue(generator = "point_station_uuid")
     private String id;
-    @Column(name = "PS_AREA",length = 64)
-    private String area; //区域,
     @Column(name = "PS_STATION",length = 64)
     private String station;  //'测站',
     @Column(name = "PS_WATERLINE")
@@ -42,6 +40,11 @@ public class PointStation {
     private String deviceNum;    //'设备卡号',
     @Column(name = "PS_HEIGHT")
     private double height;  //'空高'
+    @Column(name = "PS_LOCATION")
+    private String location;    //'地图坐标'
     @Column(name = "CREATE_TIME")
     private Date createTime;   //'更新时间',
+    @JoinColumn(name = "PS_AREA_ID")
+    @ManyToOne(cascade = {CascadeType.MERGE,CascadeType.REFRESH},optional=false)
+    private Area area;
 }
