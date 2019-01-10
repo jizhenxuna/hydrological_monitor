@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50720
 File Encoding         : 65001
 
-Date: 2019-01-10 10:58:21
+Date: 2019-01-10 11:08:53
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -25,6 +25,7 @@ CREATE TABLE `area` (
   `AREA_SUPERIOR` varchar(64) NOT NULL COMMENT '上级名称',
   `AREA_LOCATION` varchar(64) DEFAULT NULL COMMENT '地图坐标',
   `AREA_LEVEL` int(11) DEFAULT NULL COMMENT '区域级别',
+  `CREATE_TIME` datetime DEFAULT NULL,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -73,6 +74,7 @@ CREATE TABLE `point_station` (
   `PS_HEIGHT` decimal(10,2) DEFAULT NULL COMMENT '空高',
   `PS_LOCATION` varchar(64) DEFAULT NULL COMMENT '地图坐标',
   `CREATE_TIME` datetime NOT NULL COMMENT '更新时间',
+  `ps_area` varchar(64) DEFAULT NULL,
   PRIMARY KEY (`ID`),
   KEY `PS_AREA_ID` (`PS_AREA_ID`),
   CONSTRAINT `point_station_ibfk_1` FOREIGN KEY (`PS_AREA_ID`) REFERENCES `area` (`ID`) ON DELETE CASCADE
