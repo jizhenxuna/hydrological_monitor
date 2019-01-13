@@ -1,16 +1,16 @@
 package com.gpnu.iot.hydrological_monitor.pojo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -33,4 +33,7 @@ public class Area {
     private Integer level;   //区域级别 0-区域 1-市级
     @Column(name = "CREATE_TIME")
     private Date createTime;
+    @OneToMany(mappedBy = "area",fetch = FetchType.LAZY)
+    @JsonIgnore
+    private Set<PointStation> pointStationSet;
 }

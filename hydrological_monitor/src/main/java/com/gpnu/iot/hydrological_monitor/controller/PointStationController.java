@@ -33,26 +33,4 @@ public class PointStationController {
         }
         return new ResultMsg(400, "无测点信息");
     }
-
-    @GetMapping("/realtime")
-    public ResultMsg getRealTimePointStation(){
-        PointStation station = pointStationService.getRealTime();
-        if (station == null){
-            return new ResultMsg(400,"该测点无实时数据");
-        }
-        Area area = areaService.fingById(station.getArea().getName());
-        JSONObject jo = new JSONObject();
-        jo.put("area",area.getName());
-        jo.put("station",station.getStation());
-        jo.put("waterLine",station.getWaterLine());
-        jo.put("waterStatus",station.getWaterStatus());
-        jo.put("speed",station.getSpeed());
-        jo.put("ecologicalFlow",station.getEcologicalFlow());
-        jo.put("authorizedFlow",station.getAuthorizedFlow());
-        jo.put("flowStatus",station.getFlowStatus());
-        jo.put("voltage",station.getVoltage());
-        jo.put("deviceNum",station.getDeviceNum());
-        jo.put("createTime",station.getCreateTime());
-        return new ResultMsg(200, jo);
-    }
 }

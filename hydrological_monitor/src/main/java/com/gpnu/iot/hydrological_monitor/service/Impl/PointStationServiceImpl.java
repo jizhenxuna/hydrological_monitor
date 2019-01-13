@@ -16,16 +16,6 @@ public class PointStationServiceImpl implements PointStationService {
     private PointStationDao pointStationDao;
 
     /**
-     * 获取实时数据
-     * @return
-     */
-    @Override
-    public PointStation getRealTime() {
-        PointStation first = pointStationDao.findFirstByOrderByCreateTimeDesc();
-        return first;
-    }
-
-    /**
      * 获取所有测点
      * @return
      */

@@ -8,10 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
 public interface PointStationDao extends JpaRepository<PointStation, String> {
-    //查询时间最新的一条数据
-    PointStation findFirstByOrderByCreateTimeDesc();
 
     //查询所有的测点
     @Query("select distinct station from PointStation")

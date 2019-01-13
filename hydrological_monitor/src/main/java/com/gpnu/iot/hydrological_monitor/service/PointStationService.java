@@ -7,9 +7,6 @@ import java.util.List;
 
 public interface PointStationService {
 
-    //获取最近的数据
-    public PointStation getRealTime();
-
     List getAllStations();
 
     //根据区域查询测点
